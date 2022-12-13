@@ -3,7 +3,7 @@ package com.sriyank.apicep
 import com.google.gson.annotations.SerializedName
 
 class CepEntity {
-
+    // TODO: USAR O HTTP PARA NÃO USAR OS ANNOTATIONS 
     @SerializedName("cep")
     var cep: String = ""
 

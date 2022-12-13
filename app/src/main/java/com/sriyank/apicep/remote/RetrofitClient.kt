@@ -1,9 +1,7 @@
 package com.sriyank.apicep.remote
 
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class RetrofitClient {
     companion object {
@@ -11,11 +9,9 @@ class RetrofitClient {
         private const val BASE_URL = "https://viacep.com.br/ws/"
 
         private fun getRetrofitInstance(): Retrofit {
-            //val http = OkHttpClient.Builder()
             if(!::INSTANCE.isInitialized){
                 INSTANCE = Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    //.client(http.build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }
@@ -26,5 +22,4 @@ class RetrofitClient {
             return getRetrofitInstance().create(abc)
         }
     }
-
 }
