@@ -4,38 +4,341 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:padding="16dp"
     tools:context=".MainActivity">
-<!--TODO FAZER UM LAYOUT MAIS BUNITIN, TIRAR O TEXTVIEW E TRAZ OS CAMPOS-->
-    <EditText
-        android:id="@+id/edit_cep"
-        android:hint="Informe o Cep"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button
-        android:id="@+id/button_cep"
-        android:text="Passar CEP"
+    <ImageView
+        android:id="@+id/image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_cep"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_cep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:hint="Informe o Cep"
+        android:inputType="number"
+        android:maxLength="8"
+        android:minHeight="48dp"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_logo" />
+
+    <Button
+        android:id="@+id/button_retrofit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/blue"
+        android:text="CEP-Retrofit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/button_http"
+        app:layout_constraintTop_toBottomOf="@id/edit_cep" />
+
+    <Button
+        android:id="@+id/button_http"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/blue"
+        android:text="CEP-HTTP"
+        app:layout_constraintEnd_toStartOf="@id/button_retrofit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_cep" />
 
     <TextView
         android:id="@+id/text_cep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="Onde vai vir a API"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_cep"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_retrofit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="CEP"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_cep"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_cep"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_cep"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_cep"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Cep"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/edit_camp_logradura"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_cep" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="LOGRADURA"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_logradura"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_logradura"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_logradura"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_logradura"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Logradura"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_camp_cep"
+        app:layout_constraintTop_toBottomOf="@id/text_cep" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="COMPLEMENTO"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_complemento"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_complemento"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_complemento"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_complemento"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Complemento"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/edit_camp_bairro"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_cep" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="BAIRRO"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_bairro"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_bairro"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_bairro"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_bairro"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Bairro"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_camp_complemento"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_logradura" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="LOCALDIDADE"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_localidade"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_localidade"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_localidade"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_localidade"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Localidade"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/edit_camp_uf"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_complemento" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="UF"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_uf"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_uf"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_uf"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_uf"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="UF"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_camp_localidade"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_bairro" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="IBGE"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_ibge"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_ibge"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_ibge"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_ibge"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Ibge"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/edit_camp_gia"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_localidade" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="GIA"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_gia"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_gia"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_gia"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_gia"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Gia"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_camp_ibge"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_uf" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="DDD"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_ddd"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_ddd"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_ddd"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_ddd"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="DDD"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@id/edit_camp_siafi"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_ibge" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="SIAFI"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/edit_camp_siafi"
+        app:layout_constraintStart_toStartOf="@id/edit_camp_siafi"
+        app:layout_constraintEnd_toEndOf="@id/edit_camp_siafi"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edit_camp_siafi"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit"
+        android:gravity="center"
+        android:hint="Siafi"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/edit_camp_ddd"
+        app:layout_constraintTop_toBottomOf="@id/edit_camp_gia" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
